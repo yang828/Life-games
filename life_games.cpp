@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<windows.h>
 #define cols 16
 #define rols 16
 void CreateArray(int a[cols][rols]){
@@ -42,7 +43,7 @@ void ChangeArray(int a[cols][rols]){
 }
 
 void TimeArray(){
-	while((time(0)%10)!=0);		
+	Sleep(1000);		
 }
 void main(){
 	int a[cols][rols]={0};
@@ -56,8 +57,4 @@ void main(){
 		PrintArray(a);
 		printf("\n\n\n");
 	}
-	TimeArray();
-	ChangeArray(a);
-	PrintArray(a);
-	printf("\n\n\n");
 }
