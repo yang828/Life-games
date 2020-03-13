@@ -4,13 +4,17 @@
 #include<stdlib.h>
 #include<time.h>
 #include<windows.h>
-#define cols 16
-#define rols 16
+#define cols  64
+#define rols  64
+#define size 5
 void CreateArray(int a[cols][rols]){  
 	int i,j;
 	srand(time(0));
-	for(i=7;i<11;i++)
-		for(j=7;j<11;j++)
+	/*for(i=cols/2-2;i<cols/2+2;i++)
+		for(j=rols/2-2;j<rols+2;j++)
+			a[i][j]=rand()%2;*/
+	for(i=0;i<cols;i++)
+		for(j=0;j<rols;j++)
 			a[i][j]=rand()%2;
 }
 void ChangeArray(int a[cols][rols]){
@@ -45,20 +49,21 @@ void Shape(int a[cols][rols]){
 	setcolor(BLACK);
 	setfillcolor(BLACK);
     for(i=0;i<cols;i++)
-		line(0,i*40,cols*40,i*40);
+		line(0,i*size,cols*size,i*size);
 	for(i=0;i<rols;i++)
-		line(i*40,0,i*40,rols*40);
+		line(i*size,0,i*size,rols*size);
 	for(i=0;i<cols;i++)
 		for(j=0;j<rols;j++){
 			if(a[i][j]==1)
-				solidrectangle(i*40,j*40,i*40+40,j*40+40);
+				solidrectangle(i*size,j*size,i*size+size,j*size+size);
 		}
 	TimeArray(1000);
 }
 
 void main(){
 	int a[cols][rols]={0};
-	initgraph(cols*40, rols*40);
+	//initgraph(cols*size, rols*size);
+	initgraph(128*5,128*5);
 	CreateArray(a);
 	Shape(a);
     while(1){
