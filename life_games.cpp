@@ -1,3 +1,5 @@
+#include <graphics.h>      
+#include <conio.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -45,6 +47,24 @@ void ChangeArray(int a[cols][rols]){
 void TimeArray(){
 	Sleep(1000);		
 }
+void Shape(int a[cols][rols]){
+	int i,j;
+	setbkcolor(WHITE);
+	cleardevice();
+	setcolor(BLACK);
+	setfillcolor(BLACK);
+    for(i=0;i<cols;i++)
+		line(0,i*40,cols*40,i*40);
+	for(i=0;i<rols;i++)
+		line(i*40,0,i*40,rols*40);
+	for(i=0;i<cols;i++)
+		for(j=0;j<rols;j++){
+			if(a[i][j]==1)
+				solidrectangle(i*40,j*40,i*40+40,j*40+40);
+		}
+	Sleep(1000);
+}
+
 void main(){
 	int a[cols][rols]={0};
 	int i;
