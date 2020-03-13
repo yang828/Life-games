@@ -6,24 +6,13 @@
 #include<windows.h>
 #define cols 16
 #define rols 16
-void CreateArray(int a[cols][rols]){
+void CreateArray(int a[cols][rols]){  
 	int i,j;
 	srand(time(0));
 	for(i=7;i<11;i++)
 		for(j=7;j<11;j++)
 			a[i][j]=rand()%2;
 }
-
-
-void PrintArray(int a[cols][rols] ){
-    int i,j;
-	for(i=0;i<cols;i++){
-		for(j=0;j<rols;j++)
-			printf("%d ",a[i][j]);
-		printf("\n");
-	}
-}
-
 void ChangeArray(int a[cols][rols]){
 	int b[cols][rols]={0};
 	int i,j,k,l,sum;
@@ -42,11 +31,13 @@ void ChangeArray(int a[cols][rols]){
 	for(i=0;i<cols;i++)
 		for(j=0;j<rols;j++)
 			a[i][j]=b[i][j];
+		
 }
 
-void TimeArray(){
-	Sleep(1000);		
+void TimeArray(int a){
+	Sleep(a);
 }
+
 void Shape(int a[cols][rols]){
 	int i,j;
 	setbkcolor(WHITE);
@@ -62,19 +53,16 @@ void Shape(int a[cols][rols]){
 			if(a[i][j]==1)
 				solidrectangle(i*40,j*40,i*40+40,j*40+40);
 		}
-	Sleep(1000);
+	TimeArray(1000);
 }
 
 void main(){
 	int a[cols][rols]={0};
-	int i;
+	initgraph(cols*40, rols*40);
 	CreateArray(a);
-	PrintArray(a);
-	printf("\n\n\n");
-	for(i=0;i<500;i++){
-		TimeArray();
+	Shape(a);
+    while(1){
 		ChangeArray(a);
-		PrintArray(a);
-		printf("\n\n\n");
+		Shape(a);
 	}
 }
