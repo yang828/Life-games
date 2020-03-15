@@ -6,7 +6,7 @@
 #include<windows.h>
 #define cols  64
 #define rols  64
-#define size 5
+#define size 10
 void CreateArray(int a[cols][rols]){  
 	int i,j;
 	srand(time(0));
@@ -62,8 +62,7 @@ void Shape(int a[cols][rols]){
 
 void main(){
 	int a[cols][rols]={0};
-	//initgraph(cols*size, rols*size);
-	initgraph(128*5,128*5);
+	initgraph(cols*size, rols*size);
 	CreateArray(a);
 	Shape(a);
     while(1){
