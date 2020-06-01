@@ -4,15 +4,12 @@
 #include<stdlib.h>
 #include<time.h>
 #include<windows.h>
-#define cols  64
-#define rols  64
-#define size 10
+#define cols  8
+#define rols  8
+#define size 15
 void CreateArray(int a[cols][rols]){  
 	int i,j;
 	srand(time(0));
-	/*for(i=cols/2-2;i<cols/2+2;i++)
-		for(j=rols/2-2;j<rols+2;j++)
-			a[i][j]=rand()%2;*/
 	for(i=0;i<cols;i++)
 		for(j=0;j<rols;j++)
 			a[i][j]=rand()%2;
@@ -61,12 +58,14 @@ void Shape(int a[cols][rols]){
 }
 
 void main(){
-	int a[cols][rols]={0};
-	initgraph(cols*size, rols*size);
+	int a[cols][rols];
+	initgraph(640，640);		//画图窗口打开
 	CreateArray(a);
 	Shape(a);
     while(1){
 		ChangeArray(a);
 		Shape(a);
 	}
+	Shape(a);
+	closegraph();          //画图窗口关闭
 }
